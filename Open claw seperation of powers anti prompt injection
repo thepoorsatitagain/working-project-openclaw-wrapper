@@ -1,0 +1,60 @@
+Semantic Membrane — Public Disclosure
+Project: Hydra Kernel  
+Author: Robert Leroy Bates Jr, Kalamazoo MI  
+Date: 2026-03-27  
+Status: Public disclosure — first public description of this architectural concept
+---
+What This Is
+This document describes a specific architectural pattern for governing how an AI agent perceives external information — referred to here as the Semantic Membrane.
+This is not a general description of "AI safety" or "no internet access." It is a specific implementation combining components that already exist in the Hydra Kernel architecture into a governed external perception channel.
+---
+The Problem It Solves
+An AI agent with access to the open internet is vulnerable to prompt injection — malicious instructions embedded in web content that the agent retrieves and acts on as if they were legitimate instructions. Existing mitigations such as allowlists, permission checks, and content filters operate at the application layer and are inherently bypassable.
+The Semantic Membrane closes this surface architecturally, not through filters.
+---
+The Architecture
+A governed agent operating under the Semantic Membrane has the following properties:
+1. Enforced egress via EGL  
+All outbound traffic from the agent is intercepted and governed by the Egress Governance Layer. The agent cannot reach any external destination that has not been explicitly authorized by a valid DLC and matching execution envelope. Default stance is deny.
+2. The only permitted egress destination class is a credentialed AI mediator endpoint  
+The agent is not permitted to retrieve raw web content directly. The only external perception channel available to the agent is one or more AI endpoints — other governed AI systems — that have been validated by DLC as permitted destinations. The agent cannot reach search engines, arbitrary web pages, APIs, or raw content sources directly.
+3. The mediating AI operates under its own governed boundary  
+The AI endpoint the agent is permitted to reach is itself a governed system with its own safety constraints, content policies, and behavioral boundaries. It is not a transparent pipe to the internet. It processes external information and returns semantic output.
+4. Raw content never reaches the primary agent  
+The primary agent never receives raw web content, raw search results, or unmediated external input. It receives only the semantic output of the mediating AI — a processed, filtered, reframed response. Malicious instructions embedded in source content must survive translation through an independent AI system before they can reach the primary agent. This raises the attack barrier substantially and removes the direct injection surface entirely.
+5. The full chain is logged, replayable, and cryptographically attributable  
+Every external perception event — every query sent to the mediating AI, every response received — is logged in the append-only telemetry system, bound to the DLC credential that authorized the interaction, and replayable via the Deterministic Replay Engine. The complete chain from primary agent query to mediating AI response to primary agent context is auditable after the fact.
+---
+What This Is Not
+This is not a claim that:
+AI agents should have no internet access
+Browser automation is prohibited
+All external content is dangerous
+It is a claim about a specific governed configuration in which the only permitted external perception channel for a primary agent is a DLC-validated, EGL-enforced AI mediator endpoint, and the full interaction chain is cryptographically logged and replayable.
+---
+Where It Lives in the Hydra Architecture
+The Semantic Membrane is not a standalone component. It is a specific policy configuration of the existing EGL egress framework combined with DLC destination credentialing.
+It extends the following existing claims:
+EGL deny-by-default egress enforcement
+DLC as a destination authorization primitive
+Execution envelope as a per-request scoped authorization artifact
+Append-only telemetry and deterministic replay
+The specific novel combination is: DLC-gated, EGL-enforced, semantically-filtered AI-to-AI mediation as the only permitted external perception channel for a governed agent.
+This closes the prompt injection surface in a way that application-layer content filtering does not, because it removes the direct path between raw external content and the primary agent's context entirely.
+---
+Prior Art Position
+As of the date of this disclosure, no existing public implementation or publication describes this specific combination:
+DLC-credentialed AI mediator as sole permitted egress destination class
+EGL enforcement of that destination restriction at the governed runtime layer
+Semantic filtering as an architectural property of the egress policy rather than a content filter
+Full cryptographic logging and replay of the AI-to-AI mediation chain
+This document establishes the first public dated record of this architectural concept as part of the Hydra Kernel governed boundary architecture.
+---
+Related Components
+`DLC_DISCLOSURE.md` — Digital Library Card credential system
+`PUBLIC_DISCLOSURE.md` — overall project scope
+`current/egl/src/` — Egress Governance Layer implementation
+`current/gel/src/dispatch-bridge.ts` — credential minting at dispatch
+`current/egl/src/policy.ts` — egress policy framework
+---
+Hydra Kernel project — Robert Leroy Bates Jr — Kalamazoo MI — 2026-03-27
