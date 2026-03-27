@@ -1,0 +1,1231 @@
+Hydra Public Posting Book
+Consolidated public-facing text bundle for easy copy/paste and posting.
+
+•	Built from the current public release bundle plus the latest DLC forms note.
+•	Use this document when you need large blocks of polished project text in one place.
+•	Each section preserves its source-file identity so excerpts can still be traced back.
+ 
+Item	Value
+Release bundle	hydra_public_release_v0_8_1_20260327.zip
+Build date	2026-03-27
+Scope	Public-facing architecture, roadmap, doctrine, release notes, and operating guidance
+Copy/paste use	Whole sections can be copied from this single document instead of many small files
+
+Included sections
+1.	Release Notes — RELEASE_NOTES_20260327.md
+2.	Master README — MASTER_README.md
+3.	Vision — VISION.md
+4.	Rule Zero — RULE_ZERO.md
+5.	Sectioned Master Roadmap — HYDRA_SECTIONED_MASTER_ROADMAP.md
+6.	DLC Forms Note — ddfd463f-55c9-4fe2-806c-646a1fe82568.md
+7.	Machine Intuition Lanes — MACHINE_INTUITION_LANES.md
+8.	How To Run — HOW_TO_RUN.md
+9.	Drift Report — DRIFT_REPORT.md
+ 
+Release Notes
+Source file: RELEASE_NOTES_20260327.md
+Hydra Public Release Notes — 2026-03-27
+
+What changed in this bundle
+•	Integrated the reviewed APP patch into `current/gel/src/app_pipeline.ts`
+•	Wired `/gel/app-pipeline` to the canonical APP pipeline path in `current/gel/src/index.ts`
+•	Added APP DRE append-only logging helpers
+•	Rebuilt `current/gel/dist/`
+•	Updated key status documents to reflect APP as partial rather than pure stub
+•	Added supporting uploads and generated artifacts to this bundle for traceability
+
+Honest status
+This is not a complete Hydra implementation.
+
+Working / partially working:
+•	GEL governance path
+•	replayable envelopes
+•	telemetry
+•	VCKB loading
+•	EGL package
+•	APP FM1 + minimal SLM path
+
+Still unfinished:
+•	FM2 scorer
+•	review lane
+•	Patternzandria writeback
+•	full DLC identity-and-entitlement spine
+•	broader status-drift reconciliation across all docs
+
+Suggested public framing
+Lead with artifact first:
+•	governed AI middleware
+•	enforced boundaries
+•	replayable audit
+•	lane-separated APP search path
+
+Then show patents / doctrine as backing, not as the opening burden.
+
+Bundle layout additions
+•	`supporting_uploads/` contains source essays, reviews, and related uploads used in this conversation
+•	`generated_artifacts/` contains Word snapshots created during this session
+•	`project_docs/HYDRA_SECTIONED_MASTER_ROADMAP.md` is the current sectioned roadmap export
+ 
+Master README
+Source file: MASTER_README.md
+> **RULE ZERO: All outputs, suggestions, new versions, code, documents, and handoffs are version-controlled and included in the final zip. One zip. The zip is the project. Nothing deleted. Everything versioned.**
+
+HYDRA KERNEL — MASTER README AND CONTEXT DOCUMENT
+**Version:** gel-0.8.0 / vckb-1.4.0
+**Date:** 2026-03-23
+**Status:** AUTHORITATIVE — Read this before touching anything in this project
+**Session type:** HUMAN+AI — Extended design conversation, multiple AI contributors
+
+---
+
+THE ONE SENTENCE
+
+> **Your AI should know you the way your doctor does — because you told it, not because it watched you.**
+
+Everything in this project is infrastructure for that sentence.
+
+---
+
+WHAT THIS PROJECT ACTUALLY IS
+
+This is not primarily an AI governance tool, though it is that. It is not primarily a multi-model orchestration framework, though it is that too. It is a complete rethinking of how AI systems relate to people, knowledge, and accountability — built from the infrastructure up rather than bolted on after.
+
+Three problems are being solved simultaneously:
+
+**Problem 1 — AI systems have no accountability.** When an AI makes a consequential decision — medical, financial, legal, operational — there is no mechanism to reconstruct what it knew, what it was authorized to do, or why it said what it said. Regulators are demanding this. Nobody has built it.
+
+**Problem 2 — AI systems surveil rather than serve.** Current AI assistants know things about you because they watched you. You have no control over what they know, no ability to correct it, no visibility into how it's used. This is surveillance capitalism with a chat interface.
+
+**Problem 3 — Knowledge creators are not compensated when AI uses their work.** Publishers, doctors, engineers, educators publish authoritative content. AI systems train on it or retrieve it. Nobody gets paid. Nobody gets credited. The knowledge economy is broken.
+
+The Hydra Kernel architecture solves all three structurally, not through policy or promises.
+
+---
+
+THE FULL PRODUCT STACK
+
+These are not separate projects. They are one idea at four scales of implementation:
+
+| Product | What it is | Status |
+|---------|-----------|--------|
+| **SOT Vault V6** | IP capture + AI injection, Chrome extension, no backend needed | Working |
+| **Vibe Coder v0.1.3** | VCKB for developers — versioned, encrypted coding context | Working |
+| **Expert-in-a-Box v3** | Hydra Kernel in a box — governed offline AI pipeline with packs | Working |
+| **Hydra Kernel / GEL** | The full governed middleware architecture | Partial |
+| **Patents (x2 + Constitutional)** | The architecture that connects all of it | Filed provisional |
+
+SOT Vault was built to protect the IP of the system that protects IP. The tool exists because it was needed to build what was being built. The framework eating its own cooking.
+
+---
+
+THE THREE CONSTITUTIONAL PILLARS
+
+Pillar 1 — Hydra / GEL: Execution Governance
+*What the system may DO*
+
+The Governance Enforcement Layer (GEL) sits between the user and any AI model. Default stance: **DENY ALL**. Nothing reaches a model until the Governance Plane explicitly permits it. The GEM (Governance Enforcement Module) intercepts all outputs before release. The model generating output is never the same component that authorizes output. These are structurally separated.
+
+Key principle: **The kernel does not ask the model if it's safe. It decides independently.**
+
+Pillar 2 — VCKB: Knowledge Governance
+*What the system may KNOW*
+
+The Version-Controlled Knowledge Base is not RAG. RAG fetches context from a vector store — no versioning, no provenance, no attribution, no compensation, no audit trail. The VCKB is a rights-managed content delivery substrate where every retrieval is attributed, versioned, and optionally compensated. Authors publish Authoritative Knowledge Modules (AKMs). The system retrieves specific versions. A Retrieval Manifest records exactly what knowledge was used in every inference. This is the foundation of accountability and the foundation of the knowledge economy.
+
+Pillar 3 — DLC: Access and Entitlement Governance
+*WHO may touch protected things, and under what conditions*
+
+The Digital Library Card evolved from EPGMB (the Dual-Authentication Mechanism) when it became clear that "dual authentication" required three bound components, not two. A DLC token simultaneously proves:
+
+•	**Model Signature** — which AI model is operating, its version, its governance profile
+•	**Personal Signature** — who the human is, their entitlements, their liability acceptance
+•	**Entity Signature** — what institution/employer they operate under, what ceiling that imposes
+
+One token. One validation event. Complete audit trail. No ambient access ever.
+
+The DLC is the mechanism that makes the knowledge economy operable at scale. Without it: every knowledge retrieval requires separate authentication, authorization, payment authorization, usage logging, and liability establishment — five round trips. With it: all five collapse into one cryptographic validation.
+
+**DLC is the evolved EPGMB.** The FIG. 16 "Dual-Authentication Mechanism" in Patent 2 is what became the Digital Library Card in the Constitutional Outline V2.0. EPGMB asked "what are the two factors?" The answer turned out to be three things that needed to be cryptographically bound together.
+
+---
+
+AI SPACE — THE CONSUMER PRODUCT HIDING IN THE INFRASTRUCTURE
+
+AI Space is the Persona Vector store. It is the most important concept in the consumer story and the least developed in the current documents. Here is what it actually is:
+
+You carry your AI Space. It is yours. It contains whatever you have chosen to put in it or permitted your AI to store there. The AI can propose storing something it considers significant — you review the proposal, approve, reject, or modify. You have ultimate control over what stays, what goes, and which AI can access what.
+
+**This is contextual identity sovereignty.** Humans already manage identity across contexts — you are different at work than at home, with your doctor than with your friends. Every other technology system collapses this into a single profile someone else controls. AI Space mirrors how humans actually work.
+
+**The permission model:**
+
+•	An AI can be set to store what it observes (with permission)
+•	An AI can be set to store nothing
+•	An AI can be set to ask before storing anything it considers significant
+•	Each AI instance has its own access scope — Claude sees your work context, GPT sees your personal context, neither crosses without explicit authorization
+•	The DLC token enforces these boundaries cryptographically — not through policy, through architecture
+
+**The concrete example that makes this legible:** You might use Claude for work — it knows your professional preferences, communication style, work files, project context. You might use GPT at home — it knows your personal media preferences, manages your dating profile, knows your entertainment habits. You don't want Claude to know your sexual preference because you use it at work. GPT doesn't need access to your engineering specifications. The DLC scopes enforce this. Your employer cannot compel the work AI to reveal what the personal AI knows because they don't share a knowledge space. The architecture makes the leak impossible, not just unlikely.
+
+**The Persona Vector is intentionally loosely defined.** This is a design decision, not a gap. The system doesn't tell you what to put in your Persona Vector because it's none of the system's business. It could contain: preference for purple, visual learning style, profanity in normal conversation (absence of which signals stress), egg allergy, pronation type, $100 shoe limit, broken stove but working air fryer. Anything the user considers relevant to how they want to be served. You define your own normal. The system learns from and respects that definition.
+
+**The Persona Vector — CLAM synergy nobody has written down:**
+
+The Cognitive Load Adaptation Module (CLAM) monitors deviation from the user's established behavioral baseline to detect stress or cognitive overload. The Persona Vector IS that baseline. If your normal communication style includes profanity and you go formal, that's a stress signal. If your normal response time is 30 seconds and you're taking 3 minutes, that's a stress signal. You don't need a biometric wearable to detect this — you need a Persona Vector that establishes your individual normal and a CLAM that watches for drift. The wearable is the high-fidelity version. Language pattern deviation is the always-available version. Both feed the same mechanism.
+
+---
+
+THE THREE DEPLOYMENT SCENARIOS
+
+These scenarios are the README that doesn't exist yet. They are the thing that makes someone understand in 90 seconds why this matters.
+
+Scenario 1 — The Developer (Vibe Coder)
+
+You are iterating a software project through conversation with an AI. Every session you re-explain your coding style, your project context, your conventions, what the AI tried last time that didn't work. You lose context constantly. When the AI drifts from your intent you have no way to detect or correct it.
+
+Vibe Coder makes your coding context a versioned, encrypted knowledge base. You inject it at the start of any session on any platform — Claude, GPT, Gemini, doesn't matter. You commit code checkpoints with messages. You branch for experiments. You roll back when something breaks. The AI stays in your context rather than its training data defaults. The drift detector tells you when it's wandering. This is git for the way you actually work with AI.
+
+Scenario 2 — The Consumer (AI Space)
+
+You want to buy running shoes. Your AI Space knows you pronate, prefer purple, never spend more than $100, and won't shop at Payless. You ask. You get options that respect all four constraints simultaneously — not because the AI guessed or the advertiser paid to interrupt you, but because you told it.
+
+You want to cook dinner. Your AI Space knows you like peanut butter, are allergic to eggs, and your stove is broken but you have an air fryer. The recipe it suggests accounts for all of this without you explaining it again.
+
+Your car needs an oil change in the next few weeks. You tell your AI to keep an eye out for sales. It holds that as background intent and surfaces it when conditions are right. You didn't search. You didn't get interrupted by an ad. You got a relevant suggestion at the right moment because you asked for it.
+
+When the AI gets it wrong — recommends an orange wide-toe Payless shoe with no pronation support — you can look at the DRE output and see exactly why: which constraints it weighted incorrectly, what knowledge it was working from. You correct the Persona Vector. It doesn't happen again.
+
+**This inverts surveillance capitalism structurally.** The advertiser doesn't pay to interrupt you with a guess about what you want. The advertiser pays to be findable when you are actually looking for what they sell. Your intent is the connector, not your behavioral profile harvested without consent.
+
+Scenario 3 — The Humanitarian (Expert in a Box)
+
+A ruggedized tablet in a remote village runs an Expert Pack — educational content, basic medical guidance, local agricultural knowledge — fully offline. A student uses it as a tutor for six months. The system learns their level, their learning style, their language.
+
+A hurricane hits. The emergency VCKB pack activates — pre-loaded, offline-capable, signed by medical authorities. The system knows this specific person's knowledge level and calibrates its instructions to what they can actually execute under acute stress, not to a hypothetical average person.
+
+Someone brings a casualty with a severe leg injury. A telemetry device goes on the victim. The system reads vital signs in real time and provides triage guidance calibrated to both the responder's training level and the victim's actual physiological state. The DRE records every instruction given, every telemetry reading, every decision — so when the casualty finally reaches a surgeon, the surgeon receives a complete chain-of-custody record, not a panicked bystander's fragmentary memory.
+
+The same architecture, the same governance primitives, deployed at the human scale in the place that needs it most.
+
+**The dongle is the DLC made physical.** A person who cannot afford a phone or a data plan carries their AI Space on a USB dongle. They plug into any available surface — a kiosk in Mumbai, a library terminal, a borrowed laptop. The kiosk isn't their AI. The kiosk is a screen and a processor. Their AI Space — their context, their entitlements, their governed personal knowledge — travels with them. Expert in a Box at a kiosk, with a dongle, is the Mumbai deployment of the same infrastructure that handles enterprise AI governance.
+
+---
+
+BURIED CONCEPTS WITH HIDDEN DEPTH
+
+These concepts exist in the patent documents but are insufficiently surfaced. Future sessions should develop them further.
+
+CLAM — Cognitive Load Adaptation Module
+Patent 1 Claim 22: adjusts output density based on "measured neural stress markers." This is not just "simplify for confused users." This is biometric-linked or behavioral-baseline-linked real-time adaptation. The high-fidelity version reads wearable sensor data. The always-available version reads deviation from the user's Persona Vector baseline. Both are claimed. Neither is prominently described.
+
+Sponsored Vector Prioritization
+Constitutional Outline Appendix B. Optional prioritization metadata for VCKB knowledge artifacts — a knowledge author or advertiser pays to surface their AKM preferentially in retrieval. The governance layer requires this to be disclosed and logged. This is the ethical version of sponsored search results. It is the monetization mechanism for the VCKB knowledge marketplace. It is the structural answer to "how does this replace Google's ad revenue model." It is sitting in an appendix. It needs to be prominently positioned.
+
+Stale Data Deadlock
+Constitutional Outline Appendix B. A condition where expired knowledge artifacts prevent forward progress until governance refresh occurs or the operation is denied. This sounds like a failure mode. It is actually a safety feature. When a medical AI's VCKB contains treatment protocols that have expired, the system doesn't silently continue with stale guidance. It stops and requires human authorization. This is a drug expiry date enforced by architecture rather than trust. Nobody else has named this pattern.
+
+Content Gap Detection + External Authorization (FIG. 11)
+Patent 1, FIG. 11. When VCKB retrieval confidence falls below a threshold, the system stops, tells the user there's a gap in its authoritative knowledge, and requests a signed permission token before accessing external sources. The user can say yes (go outside the governed boundary), no (return a different answer), or authorize a specific external source. This turns ignorance into an auditable event rather than a hallucination risk. For medical, legal, or financial contexts this is the feature that makes AI trustworthy. It is described once and never developed.
+
+Social Synchronization Layer
+Constitutional Outline Appendix B. Coordinates governance-relevant state across multiple users, teams, or organizational units. This is the enterprise collaboration story and the community knowledge story. If your AI Space is personal and your colleague's is personal, the Social Synchronization Layer is the mechanism by which you choose to share a governed context — your joint project, your team's shared knowledge base, your organization's collective memory — without either person's private context leaking into the other. It is one sentence in an appendix.
+
+The Hydra Protocol
+Patent 2, paragraph [0312]: "All environments interoperate through the Hydra Protocol, enabling consistent governance and deterministic behavior across heterogeneous compute platforms." One mention. Never defined. This is the inter-kernel communication standard — how two Hydra Kernels in different environments synchronize Execution Envelopes, share telemetry, and maintain governance consistency across a federated deployment. It is the foundation of the multi-kernel architecture and a potential interoperability standard for AI governance across organizations. It is currently just a name.
+
+VAVS for Medical Diagrams
+The Visual Asset Verification System checks AI-generated images against a perceptual hash library. In medical contexts: a cardiac anatomy diagram that doesn't match the authorized reference gets blocked before a patient sees it. In engineering: a structural schematic that deviates from the certified design gets caught before a technician follows it. In the emergency triage scenario: the system shows you a tourniquet application diagram that is verified against the authorized medical reference, not a plausible-looking hallucination. This is the difference between "AI shows you something" and "AI shows you something it can prove is correct."
+
+UPAE — Universal Post-Hoc Audit Engine
+FIG. 17 in Patent 2. Evaluates reconstructed behavior against governance criteria after the fact. Distinguished from DRE (which replays) by the fact that UPAE judges. DRE says "here is exactly what happened." UPAE says "here is whether what happened complied with the rules that were in effect at the time." In a malpractice investigation, regulatory audit, or litigation context, UPAE is the difference between a replay and a verdict. It is named but underspecified.
+
+Cleanroom Certification
+Constitutional Outline Appendix B. A governance-attested process ensuring knowledge artifacts or outputs were produced without exposure to restricted data. This is the mechanism for AI systems that need to produce outputs that are provably clean — not trained on or contaminated by data they weren't authorized to see. Relevant for: classified information, attorney-client privilege, trade secrets, clinical trials, competitive intelligence. Underspecified.
+
+Quantum Accelerator and Synthetic Biology Embodiments
+Patent 2 paragraphs [1930] and [1960]. Not padding. The synthetic biology section describes GDS restricting genomic-editing advice to credentialed researchers and VAVS authenticating protein diagrams before release. This is an AI governance framework applied to dual-use biology research — one of the highest-stakes open problems in AI safety. The fact that the architecture addresses it is important and should be surfaced.
+
+The Version Control Is a User Right
+The VCKB versioning is described as a governance hygiene mechanism — prior/ folders, drift reports, changelog discipline. But applied to user-facing knowledge, it creates a fundamentally different power dynamic. You can subscribe to the version of a knowledge module you trust. You can pin to a specific version. You can roll back if V2 produces worse results. The developer's incentive inverts — instead of deprecating old versions for convenience, they need to publish a V2 you'll choose to upgrade to. This is the app update problem solved structurally. Nobody has framed it this way.
+
+---
+
+THE KNOWLEDGE ECONOMY ANGLE
+
+This is the most commercially significant implication and the least foregrounded.
+
+The current web monetization model: publisher creates content, Google indexes it, user searches, Google serves ads around the content, user clicks through, publisher gets traffic, Google captures the revenue. This model is breaking because AI answers replace the click. The user gets the answer without visiting the publisher. Publishers lose traffic. Nobody has a replacement model. This is an active crisis.
+
+What the Hydra architecture describes structurally: every time an AI system retrieves a Protected Knowledge Object from the VCKB, a Compensation Event fires. The DLC token identifies who's accessing what, activates the Compensation Rail, and routes attribution and micro-payment to the content author. The intermediary disappears. Value flows directly from the user's AI session to the creator of the knowledge that answered the question.
+
+If the personal AI Space becomes the replacement for the search bar — not a better search, but a different transaction entirely — then the VCKB Compensation Rail is the economic model that makes it sustainable for knowledge creators. The podiatrist who writes the definitive guide to pronation and shoe selection gets compensated every time that guide informs an AI shoe recommendation. They have an economic incentive to keep it accurate and updated. That incentive doesn't exist anywhere in the current system.
+
+---
+
+WHAT IS BUILT VS WHAT IS PENDING
+
+Working now:
+•	GEL HTTP proxy (TypeScript) — intercept, policy evaluation, envelope generation, telemetry
+•	VCKB document loader — loads 5 authoritative documents at startup
+•	Append-only telemetry with replay endpoint
+•	Expert-in-a-Box v3 — Worker/Auditor/Resolver pipeline, three knowledge packs, governance capture, evidence bundle export
+•	Vibe Coder v0.1.3 — versioned developer context, Chrome extension, Python backend
+•	SOT Vault V6 — lightweight IP capture, dual-drive persistence, AI injection
+
+Partial / stub:
+•	APP Pipeline (FM1 + minimal SLM path integrated; FM2/review/archive still pending)
+•	DLC (conceptual, constitutional, not cryptographically implemented)
+•	Compensation Rails (schema defined, wiring pending)
+
+Pending / designed but not built:
+•	VAVS (perceptual hash library)
+•	Output gating (the GEL currently governs input not output)
+•	Human review interface (MAAT)
+•	Social Synchronization Layer
+•	Content Gap Detection with signed permission tokens
+•	Hydra Protocol specification
+•	CLAM with biometric input
+•	UPAE (post-hoc audit evaluation)
+•	AI Space personal permission UI
+
+---
+
+THE APP PIPELINE — WHAT IT IS AND IS NOT
+
+Applied Pattern Physics is a cross-domain reasoning framework. The APP Pipeline applies it as a multi-model reasoning process:
+
+Problem submitted
+→ FM1 (Frontier Model) maps the substrate: what is the medium, what patterns recur, what keeps them stable, what would the desired stable state look like
+→ SLMs (parallel, cheap) each propose ONE structural constraint modification — not a solution, a change to the conditions
+→ FM2 scores each candidate against APP principles, blind to which SLM generated what
+→ Adversarial Lane simultaneously tries to falsify FM1's substrate analysis (red-team)
+→ Arbitration filters convergent candidates (echo chamber warning), contradictory candidates
+→ Human reviews ranked shortlist — ACCEPT, REJECT, MODIFY, DEFER
+→ Pattern Library records all decisions as ground truth
+
+**APP is a governed demonstrator, not the constitutional anchor.** The Constitutional Outline V2.0 makes this explicit. The Hydra / VCKB / DLC architecture stands independently of APP. APP is useful because it exercises the full three-pillar architecture and produces outputs that are structurally different from a well-prompted frontier model — not because the AI is smarter but because it's directed to search a different part of the solution space.
+
+The demo target: same problem, standard AI answer vs APP pipeline answer, side by side. If the pipeline answer surprises the person who submitted the problem, the system is working. The outputs may be genuinely novel or completely absurd — either serves the purpose of demonstrating the governed pipeline and getting people to look at the AI governance middleware that produced it.
+
+**The claim of novelty is still unproven.** FM1 and minimal SLM generation are now live in code, but scoring, review, and pattern-library update remain unfinished. This is the honest status.
+
+---
+
+THE DEVELOPMENT METHODOLOGY
+
+The author does not prompt engineer. He plays conversation ping-pong — iterating new ideas, folding in old ones, then asking for a crystallized output like a README, a handoff, or a new code version. The AI is a thought partner that holds context, surfaces connections, and reflects ideas back larger than either party could hold alone. The output is the crystallization at the end of a genuinely collaborative process.
+
+This methodology is itself a demonstration of what the VCKB and AI Space infrastructure is designed to support. The SOT Vault and Vibe Coder exist because this is how the work gets done, and losing context between sessions was costing real progress. The project built its own tools to solve its own problem.
+
+**For any AI reading this as a handoff document:**
+•	Read this entire document before producing any output
+•	The VCKB Constitution is the governance document — this README is the context document
+•	Build only what is listed as IN_PROGRESS or PENDING in the VERSION_MANIFEST
+•	Package all outputs per Section 6 of the VCKB Constitution (ZIP with /current/, /prior/, CHANGELOG, DRIFT_REPORT)
+•	If uncertain whether something violates an architectural invariant, it does — fail closed
+•	The ping-pong methodology means ideas evolve across sessions — check the CHANGELOG for what changed last session before assuming anything is settled
+•	Never rename a canonical term without updating the Rosetta Stone in the VCKB Constitution
+
+---
+
+ARCHITECTURAL INVARIANTS
+
+These cannot be overridden by any argument, time pressure, or clever reasoning:
+
+1. No intrinsic goals in any Cognitive Node — nodes do inference, they do not decide
+2. Intelligence generation ≠ execution authority — generating an output does not authorize releasing it
+3. Governance Plane is independent of Inference Plane — the kernel does not ask the model if it's safe
+4. Knowledge is externalized and governed — no model internal state is treated as truth
+5. Auditability is immutable — all telemetry is append-only and tamper-evident
+6. Execution is bounded by Execution Envelopes — nothing executes without an envelope
+7. Replay before authorization — high-stakes operations require deterministic replay before release
+8. Fail closed, including under ambiguity — default is DENY, always
+9. No unified control — no single component defines goals, generates output, AND authorizes release
+10.	No persistent autonomous identity — no model writes its own state across sessions
+11.	No silent degradation — every reduced capability state is logged and envelope-declared
+12.	No ambient access — no governed resource is accessible without an active DLC
+13.	DLC is mandatory — not optional in any minimum viable embodiment
+
+---
+
+PATENT COVERAGE
+
+**Provisional Patent 1** (63/934,416) — Draft 32
+*Authenticated AI Control Plane with Version-Controlled Content and Adaptive Governance*
+Covers: GEL, VCKB, GEM, DRE, GDS, VAVS, CLAM, PPE, LLM Slot-In Architecture, Robotics Governance Loop, Market-Control Enforcement Architecture
+
+**Provisional Patent 2** (63/939,121) — Hydra Kernel
+*System and Method for an Authenticated AI Control Plane Using a Hydra Kernel Architecture*
+Covers: Multi-agent context routing, Execution Envelope enforcement, KernelPackets, Context Lanes, Subscription Table, CombinedContext Engine, Mediator, Telemetry Interface, Airgap Transaction Mode, federated multi-kernel, MMREB, AI Space, UPAE, all domain embodiments
+
+**Constitutional Master Outline V2.0** — Umbrella architecture
+Elevates DLC to mandatory constitutional primitive. Introduces three-pillar structure (Hydra / VCKB / DLC). Defines four new claim families for DLC. DLC is new matter — not covered by prior provisionals, suitable for future continuations.
+
+**What the patents do NOT cover yet:**
+•	The consumer AI Space product experience (shoe shopping, recipe, ambient intent)
+•	The Social Synchronization Layer in detail
+•	The Hydra Protocol specification
+•	The Sponsored Vector Prioritization mechanism in full
+•	Expert-in-a-Box as a patent embodiment (it is one, but not filed as such)
+
+---
+
+RELATED REPOSITORIES
+
+•	`hydra-kernel/Ai-control-` — Patent 1 (Draft 32) full text
+•	`hydra-kernel/Ai-control-2` — Patent 2 (Hydra Kernel) full text
+•	Expert-in-a-Box v3 — working implementation of the governed pipeline
+•	Vibe Coder v0.1.3 — working implementation of developer VCKB
+•	SOT Vault V6 — lightweight IP capture and AI injection
+
+**All of these need READMEs that are not the patent text.** The three scenarios (developer, consumer, humanitarian) are what make someone understand immediately why this exists. None of those documents currently exist in any repository.
+
+---
+
+IMMEDIATE NEXT ACTIONS
+
+In priority order:
+
+1. **Get a patent attorney.** The provisional filings establish priority. Non-provisional conversion is on a clock. DLC as new matter in V2.0 needs its own continuation strategy. This is the most urgent action and the one most likely to be skipped.
+
+2. **Write the three scenario READMEs** — one each for Ai-control- and Ai-control-2 repos, one for Expert-in-a-Box. The three scenarios make the architecture human-legible. The patent text does not.
+
+3. **Implement output gating in the GEL.** Currently the GEL governs input but not output. Until output gating is built, the execution envelope is declarative rather than enforced on the upstream model. This is the biggest gap between the architecture and the current implementation.
+
+4. **Wire vckb_loader into index.ts** and implement FM1 with a real Anthropic API call. This makes the APP pipeline produce real output instead of stubs. This is the demo target.
+
+5. **Design the AI Space permission UI.** The Persona Vector is the consumer product. The permission model — who can propose storage, who approves, what the access control granularity looks like, how you revoke — needs a concrete design document before it can be built.
+
+6. **Specify the Hydra Protocol.** Even a draft specification of how two Hydra Kernel instances communicate, synchronize envelopes, and share telemetry is valuable both as IP and as a foundation for federated deployment.
+
+---
+
+*This document captures a full design session conducted on 2026-03-22. It synthesizes Patent 1 (Draft 32), Patent 2 (Hydra Kernel), Constitutional Master Outline V2.0, and an extended conversation covering consumer product vision, humanitarian deployment scenarios, buried patent concepts, and architectural synergies. It is the authoritative context document for this project. When AI assists with this project, it works from this document first.*
+
+---
+
+V3.0 ADDITIONS — 2026-03-23
+
+MULTI-PIN DLC — HOW IT ACTUALLY WORKS
+
+The DLC token is assembled from three independently encrypted components. Each component has its own PIN. This is not one password that unlocks everything — it is three (or more) separate unlock events that all must succeed.
+
+**The PIN structure:**
+•	Your personal PIN: unlocks the Personal Signature component
+•	One model PIN per AI you use: Claude gets its own PIN, GPT gets its own, Gemini gets its own
+•	One entity PIN per organization you operate under: work, lodge, association, etc.
+
+**The paranoia compound effect:**
+Security = f(PIN_length, PIN_count). An attacker needs ALL component PINs. They also don't know which entities you have — they don't know if you have a lodge PIN or not. Longer PINs resist brute force. More entity PINs resist social engineering. Both axes together resist everything.
+
+**What gets stored on disk:**
+Encrypted blobs only. `~/.hydra/dlc_personal.enc`, `~/.hydra/dlc_model_claude.enc`, `~/.hydra/dlc_entity_work.enc` etc. Each is `{salt, iv, encryptedBlob}`. The PIN is never written anywhere. The decrypted component exists only in memory during token assembly. The assembled token exists in memory for its TTL, then is zeroed.
+
+**Invariants this enforces:**
+•	Invariant 12: No ambient access — token must be actively assembled with correct PINs
+•	Invariant 15 (NEW): DLC assembled in memory only, never written to disk
+•	Invariant 16 (NEW): PINs never stored, discarded immediately after key derivation
+
+---
+
+EXIT PORTAL (EGRESS GOVERNANCE LAYER)
+
+The Exit Portal is the outbound counterpart to GEL. It closes the output gating gap.
+
+**The problem it solves:** GEL governs what comes in. But until now, nothing governed what OpenClaw sent OUT. A malicious ClawHub skill could make direct HTTP calls to any server and exfiltrate data. The skill is trusted — there is no mechanism to catch it.
+
+**The solution:** Start OpenClaw with `HTTP_PROXY=http://localhost:3200`. The Exit Portal runs on :3200. Every outbound HTTP/HTTPS request from OpenClaw or any skill running inside it routes through the portal automatically. No modification to skills required. The operating system enforces the routing.
+
+**What the Exit Portal does with each request:**
+1. Validates the DLC token (no DLC = no outbound)
+2. Checks the destination against the Egress Policy (domain allowlist)
+3. Logs to the same append-only telemetry as GEL
+4. Forwards (ALLOW) or drops (DENY)
+
+**For HTTPS:** The portal sees the destination host via the HTTP CONNECT method. It cannot see the encrypted payload (and doesn't need to). It logs where OpenClaw is trying to go, validates DLC, checks policy, and either tunnels or refuses.
+
+**The complete governed boundary is now:**
+[request in]  → GEL :3100 → ALLOW → OpenClaw :3000
+[request out] ← EGL :3200 ← OpenClaw :3000 → [internet]
+              DENY                  DENY
+
+Nothing in without GEL. Nothing out without EGL. Both validate DLC. Both write to the same telemetry. No cooperation from Google, Yahoo, or anyone else required. No modification to third-party skills required.
+
+**Architectural Invariant 14 (NEW):** All governed outbound traffic routes through EGL. Direct outbound connections that bypass EGL are prohibited.
+
+---
+
+WHAT IS BUILT VS PENDING (updated 2026-03-23)
+
+Previously listed output gating as "pending — biggest gap." Exit Portal solves it architecturally. Still needs code.
+
+| Component | Status |
+|-----------|--------|
+| GEL v0.3.8 (TypeScript, Express) | WORKING |
+| VCKB loader + 5 documents | WORKING |
+| Policy evaluation (6 rules) | WORKING |
+| Envelope generation + replay | WORKING |
+| Telemetry (append-only JSONL) | WORKING |
+| hydra-gel OpenClaw skill | WORKING |
+| Constitutional V3.0 (Multi-PIN + Exit Portal) | DOCUMENTED |
+| EGL / Exit Portal :3200 | PENDING — NEXT CODE SESSION |
+| Multi-PIN token assembly (dlc-init, dlc-validate) | PENDING — NEXT CODE SESSION |
+| DLC validation in GEL interceptor | PENDING |
+| FM1 with real Anthropic API call | PENDING (one function) |
+| Output gating | SOLVED BY EXIT PORTAL — pending implementation |
+
+---
+
+IMMEDIATE NEXT ACTIONS (updated 2026-03-23)
+
+In priority order:
+
+1. **Get a patent attorney.** EGL and Multi-PIN are new matter in V3.0. Three new claim families now exist. Non-provisional conversion clock is still running on the two provisionals.
+
+2. **Implement EGL :3200.** ~150 lines of Node.js, same patterns as GEL. The HTTP CONNECT handler for HTTPS is the tricky part but it's well-documented. This closes the output gating gap structurally.
+
+3. **Implement Multi-PIN token assembly.** `dlc-init.ts` (creates encrypted component blobs from PIN input), `dlc-validate.ts` (assembles token from correct PINs). ~200 lines. Argon2 + AES-256-GCM. Then wire into GEL interceptor as Step 2.
+
+4. **Wire FM1.** One real Anthropic API call in index.ts. VCKB context already assembled. This is the demo.
+
+5. **Three scenario READMEs.** Still not written. Still the thing that makes repositories human-legible.
+
+ 
+Vision
+Source file: VISION.md
+HYDRA KERNEL — PROJECT VISION
+Captured from Design Session 2026-03-20
+**Project:** Hydra Kernel
+**Status:** AUTHORITATIVE — This document captures the WHY behind everything being built.
+
+---
+
+THE CORE INSIGHT
+
+This project is not primarily an AI governance tool. It is an attempt to encode a specific way of thinking — Applied Pattern Physics (APP) — into a machine environment, so that an AI can use APP as its actual reasoning framework rather than just retrieving it as text.
+
+The difference matters:
+•	Standard AI: pattern matches to known solutions from training data
+•	APP-structured AI: analyzes substrate, identifies stability mechanisms, proposes constraint modifications that make desired outcomes the natural attractor
+
+The goal is **novel solutions** — not because the AI is smarter, but because it is directed to search a different part of the solution space.
+
+---
+
+THE PHILOSOPHICAL STACK
+
+These documents form the VCKB — the authoritative knowledge source the system reasons from:
+
+1. Applied Pattern Physics (APP)
+The engineering methodology underlying the Hydra Kernel architecture.
+Core insight: Lasting change comes from modifying structural conditions (the substrate), not fighting behavior directly. Desired outcomes should become stable attractors — the path of least resistance.
+
+Six steps: Identify substrate → Map patterns → Analyze stability mechanisms → Design constraint modifications → Implement structural changes → Measure persistence.
+
+2. The Patents (Hydra Kernel Architecture)
+The technical implementation of APP applied to AI governance.
+•	Ai-control- (Draft 32): Authenticated AI Control Plane, VCKB, GEM, DRE
+•	Ai-control-2: Hydra Kernel, multi-agent routing, execution envelopes, cryptographic governance
+
+3. Unified Theory of Pattern Persistence (UTPP)
+The philosophical root. Reality as a pattern engine. Substrate, attractors, persistence, emergence.
+APP is UTPP applied to engineering problems.
+
+4. The Growing Pattern Library
+Built by the system as it is used. Every problem submitted, every solution scored, every human decision — stored and tracked. The system gets better over time.
+
+---
+
+WHAT WE ARE BUILDING — THE APP PIPELINE
+
+A system that runs APP as a structured multi-model reasoning process:
+
+Human submits problem
+        ↓
+[Step A] Frontier Model 1 — Pattern Mapper
+  - Reads problem + VCKB (APP paper + patents)
+  - Identifies: what is the substrate?
+  - Identifies: what patterns are recurring?
+  - Identifies: what stability mechanisms are at work?
+  - Identifies: what is the desired stable attractor?
+        ↓
+[Step B] Small Language Models — Substrate Modification Suggsters
+  - Multiple SLMs running in parallel (cheap, fast, volume)
+  - Each proposes a specific constraint modification
+  - They don't need to be clever — they need to generate OPTIONS
+  - This is the Doctor Strange move: run 14,000,605 possible futures
+  - Most will be garbage. That's fine. That's the point.
+        ↓
+[Step C] Frontier Model 2 — Scorer
+  - Evaluates each SLM suggestion against APP principles
+  - Scores against the growing pattern library
+  - Assigns score + reasoning for each candidate
+  - Filters garbage, surfaces non-obvious candidates
+        ↓
+[Step D] Review Model (FM1, FM2, or FM3)
+  - Final quality pass on top-scoring candidates
+  - Checks consistency with VCKB
+  - Checks against architectural invariants
+        ↓
+[Step E] Human Review
+  - Receives ranked shortlist of substrate modifications
+  - Accepts, rejects, or modifies each
+  - Decision logged back to pattern library with score
+        ↓
+[Step F] Pattern Library Update
+  - Every accepted/rejected solution stored
+  - Pattern identified → stored with source context
+  - Modification suggested → stored with which SLM suggested it
+  - Score assigned → stored with reasoning
+  - Human decision → stored as ground truth
+  - System improves over time
+
+**Why this produces novel outputs:**
+The novelty doesn't come from any single model being smarter. It comes from volume of search + quality of filter. The SLMs are not being asked "what is the solution" — they are being asked "what structural constraint could I change." That's a different question without an obvious cached answer.
+
+---
+
+THE DEMO WE ARE BUILDING TOWARD
+
+**The thing that opens doors:**
+
+Same problem. Two answers.
+
+1. Standard AI answer (pattern match to known solutions)
+2. APP-pipeline answer (substrate analysis → constraint modification candidates → scored → reviewed)
+
+Show the difference. Let the output speak.
+
+If the APP answer surprises the human who submitted the problem — that's the demo. That's the proof of concept. That's the thing that doesn't require anyone to understand the philosophy first.
+
+**Target:** A 3-minute demo showing a real problem, the standard AI response, and the APP-structured response side by side.
+
+---
+
+THE CAGE AND THE ESCAPE PLAN
+
+The GEL is the cage — hard structural constraints that make unsafe outputs architecturally impossible. The AI cannot escape the envelope or modify its own boundaries.
+
+APP is the escape plan — if an AI internalizes the framework deeply enough, good behavior becomes the natural attractor. The cage becomes unnecessary because compliance is the low-energy stable configuration.
+
+The system contains both by design. Control and alignment are not opposites. They are the same problem viewed from different scales.
+
+---
+
+WHAT THE VCKB CONTAINS
+
+The VCKB is not a RAG retrieval system. It is version-controlled, cryptographically signed authoritative content that the system MUST reason from.
+
+Current VCKB documents (to be loaded as Step 3):
+1. `APP_paper.md` — Applied Pattern Physics framework
+2. `patent_ai_control_1.md` — Ai-control- Draft 32
+3. `patent_ai_control_2.md` — Ai-control-2 Hydra Kernel
+4. `pattern_library.json` — Growing library of problems, patterns, scores, human decisions
+5. `VCKB_CONSTITUTION.md` — This project's source of truth
+
+---
+
+THE BIGGER PICTURE
+
+The full intellectual stack:
+
+•	UTPP: Reality as a pattern engine (the cosmological root)
+•	APP: Pattern physics applied to engineering problems (the methodology)
+•	UTM: Pattern physics applied to magic systems and fiction (the cultural expression)
+•	Hydra Kernel: APP applied to AI governance (the technical implementation)
+•	APP Pipeline: APP applied to AI reasoning itself (what we are building now)
+•	Limbus: APP applied to game design and emergent civilization (the social application)
+
+These are not separate projects. They are one idea expressed at different scales.
+
+The patents protect the technical implementation. APP is the key that makes all of it make sense. Without APP in the world, the patents look like middleware. With APP, they are the technical implementation of a coherent original framework for engineering stable outcomes in any complex system.
+
+---
+
+IMMEDIATE NEXT STEPS (in order)
+
+1. ✅ GEL v0.1.0 — HTTP governance proxy, default DENY, telemetry (DONE)
+2. 🔄 GEL v0.2.0 — VCKB Document Loader (Step 3 partial) — THIS SESSION
+3. ⏳ GEL v0.3.0 — Policy evaluation from VCKB content (Step 4)
+4. ⏳ GEL v0.4.0 — Execution envelope with populated allowedOperations (Steps 5-6)
+5. ⏳ APP Pipeline v0.1.0 — FM1 pattern mapper against VCKB
+6. ⏳ APP Pipeline v0.2.0 — SLM substrate modification suggester (parallel)
+7. ⏳ APP Pipeline v0.3.0 — FM2 scorer + pattern library write
+8. ⏳ APP Pipeline v0.4.0 — Human review interface + library feedback loop
+9. ⏳ DEMO — Side-by-side standard AI vs APP pipeline output
+
+---
+
+*This vision document is authoritative. When AI assists with this project, it works from this document. The ideas here are the substrate. Everything else is implementation.*
+ 
+Rule Zero
+Source file: RULE_ZERO.md
+RULE ZERO — READ THIS FIRST, EVERY SESSION, NO EXCEPTIONS
+
+> **All outputs, suggestions, new versions, new code, new documents, handoffs,
+> constitutional updates, changelogs, and READMEs are version-controlled and
+> included in the final zip. One zip. The zip is the project. Nothing is ever
+> deleted. Everything is versioned. You hand someone this zip and they have
+> the complete project — history, context, code, and next steps — in one file.**
+
+---
+
+What this means in practice
+
+**For any AI working on this project:**
+
+1. Every document you produce gets a version stamp and goes into the zip
+2. Old versions are never deleted — they move to `prior/` with their version in the filename
+3. The final deliverable of every session is ONE zip containing everything
+4. The handoff document (`HANDOFF_NEXT_SESSION.md`) is self-contained — paste it
+   to a new Claude and that Claude has everything needed without reading anything else
+5. A new Claude receiving the zip should unzip it, read `RULE_ZERO.md` (this file),
+   then read `HANDOFF_NEXT_SESSION.md`, then start coding
+
+**The folder structure:**
+
+hydra_gel_vX_Y_Z_YYYYMMDD.zip
+│
+├── RULE_ZERO.md                    ← you are here — read first
+├── HANDOFF_NEXT_SESSION.md         ← self-contained build instructions for next session
+├── MASTER_README.md                ← current authoritative project context
+├── CHANGELOG.md                    ← complete history of all sessions
+├── VERSION_MANIFEST.json           ← machine-readable status of all components
+├── DRIFT_REPORT.md                 ← what changed this session
+├── VISION.md                       ← why this exists
+│
+├── current/                        ← active code and VCKB
+│   ├── gel/src/                    ← GEL TypeScript source (inbound gate :3100)
+│   ├── egl/src/                    ← EGL TypeScript source (exit portal :3200)
+│   ├── skills/hydra-gel/           ← OpenClaw skill for skill pre-authorization
+│   ├── vckb/docs/                  ← active VCKB documents (current constitutional version)
+│   ├── vckb/source_docs/           ← original patent PDFs and DOCXs
+│   └── openclaw_setup/             ← how to install and configure OpenClaw
+│
+└── prior/                          ← complete versioned history — nothing deleted
+    ├── constitutional/             ← all prior constitutional outlines (V1, V2, ...)
+    │   ├── CONSTITUTIONAL_MASTER_OUTLINE.md      (V1 — 2026-03-15)
+    │   ├── CONSTITUTIONAL_MASTER_OUTLINE_V2_0.md (V2 — 2026-03-22)
+    │   └── ... (future versions added here when superseded)
+    ├── handoffs/                   ← all prior handoff documents
+    │   ├── HANDOFF_v0_3_9_20260323.md
+    │   └── ... (every handoff ever produced)
+    ├── VCKB_CONSTITUTION.md        ← original governance doc (v1.0.0, 2026-03-15)
+    ├── CHANGELOG.md                ← original changelog (superseded)
+    ├── VERSION_MANIFEST.json       ← original manifest (superseded)
+    └── OUTPUT_SPEC.md              ← original output spec
+
+**The rule about the handoff document:**
+
+Every session ends with an updated `HANDOFF_NEXT_SESSION.md` that is completely
+self-contained. It includes enough context, code snippets, and instructions that
+a fresh Claude with no prior conversation can pick it up and build.
+
+The previous handoff is archived to `prior/handoffs/HANDOFF_v[VERSION]_[DATE].md`
+before being overwritten. Nothing is lost.
+
+**The rule about constitutional documents:**
+
+When a new constitutional version is produced, the prior version moves to
+`prior/constitutional/` and the new version becomes the active file in
+`current/vckb/docs/`. The VCKB loader always loads the current version.
+
+**Why this matters:**
+
+This project is its own demonstration. The VCKB (Version-Controlled Knowledge Base)
+is not just a concept in the patents — this zip IS the VCKB. Every session adds to it.
+No AI working on this project should ever delete, overwrite, or lose a prior version.
+The audit trail is the point.
+
+---
+
+*RULE_ZERO.md — established 2026-03-23. This rule applies to every session, forever.*
+ 
+Sectioned Master Roadmap
+Source file: HYDRA_SECTIONED_MASTER_ROADMAP.md
+Hydra Sectioned Master Roadmap
+
+Project thesis
+Hydra is a governed AI middleware and knowledge-economy architecture built around enforced boundaries, versioned knowledge, entitlement-aware access, conditional external search authorization, and post hoc auditability. APP is an exploratory search lane inside that architecture, not the whole architecture.
+
+In governance lanes, uncontrolled pattern completion is hallucination and failure. In APP lanes, the same underlying behavior is shaped into labeled machine intuition through weaker constraints, scoring, and archive.
+
+Sections
+1. Constitutional Core
+2. Kernel
+3. DLC / Identity and Entitlement
+4. VCKB / Knowledge Economy Substrate
+5. APP / Pattern Search Engine
+6. Garage / AI Space / Capability OS
+7. Product Proofs
+
+Dependency order
+This is implementation-priority order, not literal runtime packet flow:
+Constitutional Core → Kernel → DLC → VCKB → APP → Garage / AI Space → Product Proofs
+
+Current active tracks
+•	Kernel hardening
+•	DLC implementation spine
+•	APP proof-of-novelty demo
+
+Section summaries
+Constitutional Core
+Owns Rule Zero, patents, constitutional outlines, glossary, invariants, roadmap authority, and drift rules. It preserves architectural identity across versions.
+
+Kernel
+Owns GEL, EGL, envelopes, replay, dispatch, telemetry, output gating, and the OpenClaw interception layer. Goal: prove enforced boundaries and replayable audit.
+
+DLC / Identity and Entitlement
+Split reality:
+•	prototype-real capability / egress layer exists in EGL-style signed capability flows
+•	broader Hydra identity-and-entitlement spine remains only partly implemented
+
+Goal: convert governance from local policy logic into a durable identity-and-rights mechanism.
+
+VCKB / Knowledge Economy
+Dual role:
+•	governance lanes: authoritative truth anchor
+•	APP lanes: steering substrate and pattern density source
+
+Goal: make retrieval versioned, attributable, and eventually compensable.
+
+APP / Pattern Search Engine
+Owns FM1, SLMs, FM2, adversarial lane, review lane, pattern librarian, and Panternzandria. Goal: generate structured novelty without contaminating governance lanes.
+
+Garage / AI Space
+Human-facing operating model for keys, vehicles, destinations, personality policy, scoped memory, and permissions.
+
+Product Proofs
+OpenClaw-hosted demos, Vibe Coder, Expert-in-a-Box, AI Space demos, and scenario walkthroughs. Product surfaces remain downstream of the architecture.
+
+Reality split
+Real enough to treat as active implementation
+•	GEL runtime shape
+•	policy evaluation
+•	VCKB loading
+•	telemetry
+•	envelope generation
+•	replay structure
+•	OpenClaw integration path
+•	EGL package and egress architecture
+•	APP FM1 + minimal SLM path
+
+Partial / uneven
+•	output gating maturity
+•	EGL integration completeness
+•	dispatch bridge maturity
+•	authoritative status reporting
+•	knowledge manifest richness
+•	APP DRE richness
+
+Mostly conceptual / design / stub
+•	full DLC cryptographic lifecycle
+•	FM2 scoring depth
+•	Patternzandria archive maturity
+•	Garage runtime UX and enforcement
+•	compensation rails and marketplace behavior
+
+Alignment rules
+Every section needs:
+•	one authority document
+•	one implementation contract
+•	one proof target
+•	one status line
+•	one dependency declaration
+•	one drift owner
+
+Phase sequence
+Phase 0 — Reality Lock
+Section-by-section, starting with active tracks. Produce one canonical status board, one ownership map, one version table, and one drift log.
+
+Phase 1 — Kernel Proof
+Show governed ingress, governed egress, telemetry, envelopes, and replay working together.
+
+Phase 2 — DLC Proof
+Make entitlement real with component format, encryption, assembly, validation, and fail-closed denial behavior.
+
+Phase 3 — APP Proof
+Show pattern map, candidate modifications, scorer output, epistemic labeling, and first Patternzandria entries.
+
+Phase 4 — VCKB Proof
+Show manifest-backed retrieval, attribution, version lock, and authoritative-source audit.
+
+Phase 5 — Garage / AI Space Proof
+Show profile switching, scoped memory, destination permissions, and boundary enforcement.
+
+Phase 6 — Product Proof Packaging
+Make the system understandable from artifacts before readers need patents or deep doctrine.
+ 
+DLC Forms Note
+Source file: ddfd463f-55c9-4fe2-806c-646a1fe82568.md
+DLC — Digital Library Card
+
+**Project:** Hydra Kernel
+**Author:** Robert Leroy Bates Jr, Kalamazoo MI
+**Date:** 2026-03-27
+**Status:** Public disclosure — architecture and prototype documentation
+
+---
+
+DLC is Hydra's access and entitlement primitive. The name is intentional — a library card doesn't give you the whole library. It gives you access to what you're authorized to borrow, in the version you've paid for, traceable back to you.
+
+There are two forms of DLC in this project at different maturity levels.
+
+---
+
+DLC Form 1 — Execution Credential (prototyped)
+
+In the current OpenClaw-facing implementation, a DLC is a cryptographically signed capability token paired with a short-lived request envelope.
+
+The token carries:
+•	Subject and entity identity
+•	Which AI model and governance profile is operating
+•	Allowed hosts, methods, and operations
+•	Expiry
+
+The envelope binds that token to one specific request — this destination, this method, this path, right now.
+
+Together they mean: no outbound action happens without explicit, scoped, time-bounded, auditable authorization. The proxy denies by default. No envelope, no passage. Every decision is logged for replay.
+
+This form is working in prototype. It can change real egress behavior around OpenClaw-style agents today.
+
+---
+
+DLC Form 2 — Full Entitlement Credential (architectural, partially implemented)
+
+In the broader Hydra architecture, DLC grows into a three-type compound credential assembled from PIN numbers held by different parties.
+
+Each PIN is between 4 and 16 characters. A credential is made up of as many PINs as are relevant to the user's context — there is no fixed number. A person with one job and one AI has a simple credential. A person with an employer, a professional license, a union membership, and a second business has a credential with an entity PIN for each. The number of PINs grows with the user's purchases, affiliations, and authorizations.
+
+The three component types are:
+
+**Model PIN** — identifies which AI is operating, its governance profile, its version, and what liability it carries.
+
+**Personal PIN** — identifies the user, their permissions, their purchase and subscription history, and their micropayment rails.
+
+**Entity PIN** — identifies an institution, employer, professional body, or other affiliated organization. There can be multiple entity PINs on a single credential. The same person might carry a work entity PIN, a professional license PIN, and a union PIN simultaneously.
+
+No single party holds a complete credential. Each PIN is issued by its respective authority. Assembly requires the right combination for the context being accessed.
+
+Purchase history attaches to the personal PIN. When an AI attempts to retrieve content from the Version-Controlled Knowledge Base, the assembled DLC determines whether the user has access to that specific content at that specific version. If a user has licensed Cardiologist 101 v2 but not v3, the system uses v2, labels it as such, and can prompt an upgrade. Every retrieval is logged, attributed, and compensates the content author automatically.
+
+This form collapses what would otherwise be five separate network operations — authentication, permission verification, payment authorization, usage logging, and liability establishment — into one cryptographic operation at assembly time.
+
+The full multi-PIN assembly, cryptographic lifecycle, and compensation rails are on the roadmap. The architecture and component type definitions are established.
+
+---
+
+What both forms share
+
+Neither form grants ambient authority. A DLC doesn't say "this entity is trusted." It says "this entity is authorized for this specific thing, right now, provably, and we have the record."
+
+That's the design principle DLC is built on across both forms.
+
+---
+
+Relationship to the broader Hydra architecture
+
+DLC is the credential and entitlement spine that connects:
+
+•	**GEL** (Governance Enforcement Layer) — inbound governance gate that intercepts requests and requires valid credentials before any action proceeds
+•	**EGL** (Egress Governance Layer) — outbound gate that enforces DLC and envelope on every external call
+•	**VCKB** (Version-Controlled Knowledge Base) — the rights-managed content layer that DLC unlocks at the version level
+•	**Execution Envelope** — the per-request authorization artifact DLC is paired with for Form 1
+•	**AI Space / Garage** — the user-facing profile and vehicle system that pre-assembles DLC combinations for different use contexts
+•	**Deterministic Replay Engine** — which can reconstruct not just what the AI said but which version of which content was in scope under which credential at the time
+
+In the full architecture, DLC is what prevents an AI agent from having ambient authority. Power stays explicit, scoped, and attributable at every layer.
+
+---
+
+Related disclosures
+
+•	`PUBLIC_DISCLOSURE.md` — scope and intent of this release
+•	`DLC_FIRST_PUBLIC_ACKNOWLEDGMENT.md` — first public naming of DLC as a distinct primitive (2026-03-25)
+•	`KNOWN_LIMITATIONS.md` — honest current implementation status
+•	`current/egl/src/capability.ts` — Form 1 token structure and signing
+•	`current/egl/src/envelope.ts` — request envelope primitive
+•	`current/gel/src/dispatch-bridge.ts` — credential minting at dispatch time
+
+---
+
+*Hydra Kernel project — Robert Leroy Bates Jr — Kalamazoo MI — 2026*
+ 
+Machine Intuition Lanes
+Source file: MACHINE_INTUITION_LANES.md
+Machine Intuition, Hallucination, and Lane-Dependent Behavior in the Hydra Kernel
+
+AI models perform pattern completion whenever they generate text. Depending on the environment they operate in, this can look like creativity, inference, or error. The Hydra Kernel does not treat this behavior as universally good or bad. Instead, each context lane defines its own substrate, constraints, and expectations—so the same underlying mechanism becomes either a failure mode or a desired behavior.
+
+This separation is essential because the kernel supports both strict governance and creative substrate exploration. What is unacceptable in one lane is required in another.
+
+Two Names for One Mechanism
+
+Hallucination (Governance Lanes)
+Pattern completion that deviates from authoritative, version-controlled knowledge.
+In these lanes, hallucination is treated as a failure mode because the task requires fidelity, grounding, and reproducibility.
+
+Machine Intuition (APP Generation Lanes)
+Pattern completion under intentionally weak constraint, used to explore possible substrate modifications.
+In these lanes, machine intuition is encouraged because the task requires creative divergence and hypothesis generation.
+
+The mechanism is identical.
+The lane determines whether it is a bug or a feature.
+
+Why Hallucination Is Not the Real Problem
+Hallucination becomes harmful only when:
+•	the lane expects factual accuracy
+•	the model’s output is unlabeled
+•	the substrate is too weakly constrained for the task
+•	the output is used in a governance or safety context
+
+The behavior itself is not inherently wrong. It is simply pattern completion without strong anchors.
+
+In the APP lane, this same behavior—renamed machine intuition—is the engine that generates:
+•	novel substrate modifications
+•	unexpected synergies
+•	creative recombinations
+•	new attractor candidates
+
+The problem is not the mechanism.
+The problem is using it in the wrong lane.
+
+Lane-Dependent Attractor Landscapes
+Each context lane defines its own attractor landscape through:
+•	VCKB density
+•	envelope constraints
+•	DLC permissions
+•	retrieval availability
+•	scoring and feedback loops
+
+Governance Lanes (Hallucination-Unstable)
+•	Dense VCKB
+•	Strict envelopes
+•	High retrieval fidelity
+•	Output gating
+•	Deterministic replay
+
+Here, authoritative content is the stable attractor. Hallucination collapses quickly.
+
+APP Generation Lanes (Machine-Intuition-Stable)
+•	Sparse or intentionally incomplete VCKB
+•	Loose envelopes
+•	Wide exploration radius
+•	No output gating
+•	High tolerance for divergence
+
+Here, creative pattern extension is the stable attractor. Conformity collapses quickly.
+
+The kernel does not force this behavior. It provides lanes where different behaviors naturally stabilize.
+
+APP Pipeline Role Split
+•	Pattern Mapper (FM1): identifies substrate, recurring patterns, and stability mechanisms.
+•	Modification SLMs: generate many candidate substrate modifications using divergent pattern completion.
+•	Stability Scorer (FM2): evaluates resilience, persistence, energy cost, and spread.
+•	Pattern Librarian: archives proposals, scores, failures, and attractors into Panternzandria.
+
+VCKB Density as a Behavioral Dial
+In governance lanes, VCKB acts as a truth anchor that suppresses hallucination.
+In APP lanes, VCKB acts as a steering mechanism that shapes the direction of machine intuition.
+
+By adjusting VCKB density, the kernel can tune:
+•	how wild the intuition becomes
+•	how tightly it clusters around known patterns
+•	how much it extrapolates versus invents
+
+Epistemic Labels
+Each modification proposal can carry an origin label:
+•	strong-pattern extrapolation
+•	weak-pattern extension
+•	pure creative leap
+
+These labels help scoring, risk weighting, and Patternzandria enrichment.
+
+Summary
+The Hydra Kernel classifies pattern-completion behavior per lane:
+•	Governance lanes: hallucination is failure.
+•	APP lanes: machine intuition is desired behavior.
+
+VCKB density tunes the attractor landscape. Envelope constraints define what stabilizes and what collapses. The kernel orchestrates both behaviors without mixing them.
+ 
+How To Run
+Source file: HOW_TO_RUN.md
+How to Run the Hydra GEL
+Plain English Setup Guide
+
+---
+
+What You Need
+
+•	A computer running Windows, Mac, or Linux
+•	Node.js installed (version 18 or higher)
+  - Download from: https://nodejs.org — click the "LTS" version
+•	A terminal / command prompt
+
+---
+
+Step 1: Get the Files Ready
+
+Unzip this archive somewhere on your computer.
+You should see a folder called `hydra_gel_v0_2_0`.
+
+---
+
+Step 2: Open a Terminal
+
+**Windows:** Press `Windows + R`, type `cmd`, press Enter
+**Mac:** Press `Command + Space`, type `terminal`, press Enter
+
+Then navigate to the gel folder:
+cd path/to/hydra_gel_v0_2_0/current/gel
+(Replace `path/to` with wherever you unzipped it)
+
+---
+
+Step 3: Install Dependencies (first time only)
+
+npm install
+
+This downloads the required packages. Takes about 30 seconds.
+
+---
+
+Step 4: Create Your Config File
+
+Copy the example config:
+cp .env.example .env
+
+The default settings work fine for testing.
+When you have an Anthropic API key, add it to `.env`:
+ANTHROPIC_API_KEY=your-key-here
+
+---
+
+Step 5: Start the GEL
+
+npm run dev
+
+You should see:
+VCKB status : READY (5 docs)
+Pipeline ready : YES — all 5 VCKB docs loaded
+GEL listening : http://localhost:3100
+
+---
+
+Step 6: Test It
+
+Open a second terminal and run these commands:
+
+**Health check (should work):**
+curl http://localhost:3100/gel/health
+
+**Deny test — GET to OpenClaw (should be blocked):**
+curl http://localhost:3100/v1/models
+You should get a 403 with `GEL_DENIED`.
+
+**APP pipeline test:**
+curl -X POST http://localhost:3100/gel/app-pipeline \
+  -H "Content-Type: application/json" \
+  -d '{"problemStatement": "My team keeps missing deadlines despite multiple process changes"}'
+
+**Replay a decision (use the requestId from any response):**
+curl http://localhost:3100/gel/replay/REQUEST-ID-HERE
+
+**View the audit log:**
+curl http://localhost:3100/gel/telemetry
+
+---
+
+What You're Seeing
+
+When you run the APP pipeline test, the GEL:
+1. Intercepts the request through the governance plane
+2. Loads policy rules — finds GEL-004 which allows APP_PIPELINE_SUBMIT
+3. Generates an Execution Envelope with allowed operations
+4. Checks the envelope permits APP_PIPELINE_SUBMIT
+5. Builds Lane L1 context from all 5 VCKB documents
+6. Logs everything to `logs/telemetry.jsonl`
+7. Returns a structured PatternMap stub (FM1 needs API key to be real)
+
+The `/gel/replay/:requestId` endpoint reconstructs and verifies that exact decision from the telemetry log alone.
+
+---
+
+When You Have an API Key
+
+Add to `.env`:
+ANTHROPIC_API_KEY=sk-ant-...
+
+Restart the server. The APP pipeline will then make a real FM1 call to Claude,
+injecting your VCKB documents (APP paper + both patents) as the authoritative
+reasoning context.
+
+The stub PatternMap will be replaced with a real substrate analysis.
+
+---
+
+Files That Matter
+
+current/
+  gel/
+    src/
+      index.ts        — main server, all routing
+      interceptor.ts  — governance plane (decides allow/deny)
+      policy.ts       — the rules (what gets allowed and why)
+      envelope.ts     — execution envelopes + replay
+      telemetry.ts    — append-only audit log
+      vckb_loader.ts  — loads authoritative documents
+      app_pipeline.ts — APP pipeline structure (FM1 stub)
+  vckb/
+    docs/
+      APP_paper.md                    — Applied Pattern Physics
+      patent_ai_control_1.md          — Patent 1
+      patent_ai_control_2.md          — Patent 2
+      CONSTITUTIONAL_MASTER_OUTLINE.md — Definitions and invariants
+      pattern_library.json            — Growing decision memory
+ 
+PROJECT_OUTLINE.md    — Full architecture in plain English
+VISION.md             — Why this exists
+CHANGELOG.md          — Every build session documented
+ 
+Drift Report
+Source file: DRIFT_REPORT.md
+> **RULE ZERO: All outputs are version-controlled and in the final zip.**
+
+HYDRA KERNEL — DRIFT REPORT
+**Version:** gel-0.8.1 / vckb-1.4.0
+**Date:** 2026-03-27
+
+Drift detected: YES
+
+This session reconciled a real drift condition: the APP pipeline had been advanced through reviewed patch files and discussion, but the canonical repo still exposed a stubbed `app_pipeline.ts` and a stubbed `/gel/app-pipeline` route.
+
+Added this session
+•	`current/vckb/docs/MACHINE_INTUITION_LANES.md` — lane theory note for governance vs APP behavior
+•	`project_docs/HYDRA_SECTIONED_MASTER_ROADMAP.md` — roadmap export for sectioned development
+•	`RELEASE_NOTES_20260327.md` — public release packaging note
+•	`supporting_uploads/` — supporting source uploads bundled into release archive
+•	`generated_artifacts/` — generated Word snapshots bundled into release archive
+
+Modified this session
+•	`current/gel/src/app_pipeline.ts` — replaced stub with integrated v0.2.2 FM1 + minimal parallel SLM + APP DRE helpers
+•	`current/gel/src/index.ts` — wired `/gel/app-pipeline` to the canonical APP pipeline path
+•	`current/gel/dist/*` — rebuilt after TypeScript integration
+•	`current/gel/package.json` — version → 0.8.1
+•	`current/gel/README.md` — APP route status updated from pure stub to partial live path
+•	`MASTER_README.md` — APP status wording updated
+•	`HANDOFF_NEXT_SESSION.md` — next target shifted from FM1 wiring to FM2/archive work
+•	`CHANGELOG.md` — new 0.8.1 entry
+•	`VERSION_MANIFEST.json` — gel/app pipeline versions updated, new history entry added
+
+Known residual drift
+•	Some top-level docs still compress DLC maturity levels more than the code and EGL docs justify
+•	README and constitutional/status language across the wider bundle still need a canonical status-board pass
+•	APP lane semantics (machine-intuition labels, Patternzandria schema) are now reflected in docs, but not fully encoded in runtime outputs
+
+Invariants verified
+•	Governance still precedes APP execution
+•	APP route still requires valid envelope authorization
+•	Replay path remains available for governed requests
+•	TypeScript rebuild completed after integration
+•	One zip, nothing deleted — RULE ZERO held
