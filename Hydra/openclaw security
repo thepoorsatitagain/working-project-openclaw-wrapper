@@ -1,0 +1,276 @@
+Hydra Sectioned Master Roadmap
+Purpose
+This roadmap breaks the Hydra project into aligned sections so development can continue in parallel without losing architectural integrity. The goal is not to shrink the vision. The goal is to preserve the vision while making implementation tractable.
+This roadmap assumes the following are already true: - The project is one system, not a set of unrelated experiments. - The constitutional layer is upstream of implementation. - The codebase is unevenly mature across sections. - Product proofs should emerge from the architecture, not define it. - Alignment matters as much as progress.
+________________________________________
+Project Thesis
+Hydra is a governed AI middleware and knowledge-economy architecture built around enforced boundaries, versioned knowledge, entitlement-aware access, and post hoc auditability. APP is an exploratory search lane inside that architecture, not the whole architecture. OpenClaw is the current host substrate, not the long-term identity of the system.
+________________________________________
+The Seven Sections
+1. Constitutional Core
+What it is
+The non-negotiable source of truth for what Hydra is, what it protects, what it forbids, and what claims it is allowed to make.
+Includes - Rule Zero - patent framing - constitutional outlines - lexicography - invariants - roadmap authority - drift rules
+Primary purpose
+Preserve architectural identity across versions, contributors, and implementation waves.
+Authority docs - RULE_ZERO.md - MASTER_README.md - current/vckb/docs/CONSTITUTIONAL_MASTER_OUTLINE_V3_0.md - patent materials under current/vckb/docs/ and current/vckb/source_docs/
+Current state
+Strong conceptually. Weak operationally only in the sense that authority is spread across multiple documents and status claims are not centralized.
+Must guarantee - One canonical statement of system purpose - One canonical lexicon - One canonical record of architectural invariants - One canonical roadmap and version status source
+Must never do - Drift into feature chatter - Be bypassed by README claims or code comments - Allow product rhetoric to redefine constitutional meaning
+Proof target
+Every system section can point to a clear constitutional parent and no two authority docs contradict each other materially.
+________________________________________
+2. Kernel
+What it is
+The governed runtime control plane: inbound governance, outbound governance, envelope logic, replay, dispatch, telemetry, and fail-closed execution behavior.
+Includes - GEL - EGL / Exit Portal - envelope generation and validation - dispatch bridge - telemetry - replay - output gate behavior - OpenClaw interception layer
+Primary purpose
+Make the claim of enforced boundaries and replayable audit real.
+Authority docs - MASTER_README.md - current/gel/README.md - current/egl/README.md - constitutional sections covering GEL/EGL
+Current state
+Farthest along. Core inbound governance, policy evaluation, VCKB loading, envelope generation, telemetry, and replay already exist in some form. EGL exists as a defined architecture and code package, but integration maturity is still behind the conceptual framing.
+Must guarantee - No governed inbound flow without policy evaluation - No governed outbound flow without egress validation - Replay can reconstruct key execution facts - Telemetry is append-only and legible - Default stance remains deny/fail-closed
+Must never do - Ask the model to self-authorize - Allow hidden egress paths - Collapse logging and enforcement into one vague behavior
+Proof target
+A governed OpenClaw session can be shown where ingress, envelope generation, egress, and replay all function as one auditable boundary.
+________________________________________
+3. DLC / Identity and Entitlement
+What it is
+The credential and entitlement spine that binds model identity, personal identity, and entity identity into one validation event.
+Includes - DLC token assembly - multi-PIN logic - component encryption - validation - issuance assumptions - entitlement scope - liability hooks
+Primary purpose
+Convert governance from local policy logic into a durable identity-and-rights mechanism.
+Authority docs - constitutional outline V3.0 - patent documents related to dual authentication / DLC evolution - future DLC implementation spec
+Current state
+Constitutionally central, implementation-light. Token validation stubs and design framing exist, but the full cryptographic spine is not yet the live engine of the system.
+Must guarantee - No access without valid assembly - No partial token assembly accepted - Components remain independently secured - Validation is auditable - Scope is explicit and machine-checkable
+Must never do - Revert to ambient access - Allow silent privilege expansion - Treat entitlement as a prompt-level convention
+Proof target
+A real token assembly and validation flow denies incomplete credentials and permits only the destinations associated with the active profile.
+________________________________________
+4. VCKB / Knowledge Economy Substrate
+What it is
+The version-controlled, provenance-aware, rights-managed knowledge layer.
+Includes - AKMs - source docs - retrieval manifests - provenance - version-specific retrieval - author/publisher attribution - compensation logic - future marketplace behavior
+Primary purpose
+Turn knowledge access into a governed, attributable, and eventually compensable substrate.
+Authority docs - MASTER_README.md - constitutional outline sections for VCKB - patent docs under current/vckb/docs/ - VCKB source docs and manifests
+Current state
+Architecturally strong, partly implemented. Loader behavior exists. Full economy rails and rich publisher flow do not.
+Must guarantee - Every retrieval can be versioned and traced - Authoritative knowledge can be distinguished from ambient context - Retrieval inputs are reconstructable after the fact - Knowledge use can be attributed and later priced
+Must never do - Degrade into generic untracked RAG - Lose source/version coupling - Let convenience bypass provenance
+Proof target
+A single model output can be tied back to a versioned knowledge manifest showing exactly what authoritative knowledge was used.
+________________________________________
+5. APP / Pattern Search Engine
+What it is
+The exploratory lane for substrate-aware pattern analysis and candidate pattern modification.
+Includes - FM1 pattern mapper - modification SLMs - FM2 scorer - adversarial lane - review lane - pattern librarian - Patternzandria / Panternzandria - output labels for epistemic class
+Primary purpose
+Generate structured novelty without contaminating governance lanes.
+Authority docs - APP paper - machine-intuition / lane behavior text - Hydra architecture framing where APP is placed inside lane logic - future APP implementation contract
+Current state
+Most conceptually distinctive. Least mature operationally. The lane logic is well articulated, but the engine is still mostly scaffolding and stubs.
+Must guarantee - APP outputs are clearly labeled as exploratory - Search and scoring remain distinct roles - Failures are archived, not discarded - Candidate patterns are evaluated against substrate and persistence logic - APP outputs never silently inherit governance authority
+Must never do - Masquerade exploratory outputs as validated truth - Collapse into ordinary prompt creativity with grandiose labels - Lose failed outputs that contain transferable structure
+Proof target
+For at least one domain, Hydra produces a pattern map, multiple substrate modifications, a scored shortlist, and a saved archive entry that preserves both good and failed candidates.
+________________________________________
+6. Garage / AI Space / Capability OS
+What it is
+The human-facing operating model for context-separated AI identities, permissions, memory boundaries, and destination access.
+Includes - Garage - vehicles - keys - destinations - personality policy - memory boundaries - corridor/portal design - AI Space user framing
+Primary purpose
+Translate the constitutional and entitlement architecture into a usable control model for actual people.
+Authority docs - MASTER_README.md - current/vckb/docs/PERMISSION_PORTAL_DESIGN_V3_0.md - future Garage/AI Space UX spec
+Current state
+Conceptually rich, still design-heavy. This is already one of the clearest product surfaces in writing, but not yet a real runtime operating layer.
+Must guarantee - Memory remains scoped by vehicle/profile - Personality is treated as policy, not flavor text - Destination permissions are explicit - Vehicle configuration drift is versioned and auditable
+Must never do - Blur work/home/medical contexts - Treat memory bleed as acceptable - Let the same credential silently pick up broader powers without trace
+Proof target
+One user can switch between at least two profiles with clearly separated memory, destinations, and behavior rules, while the system can show why each boundary held.
+________________________________________
+7. Product Proofs
+What it is
+The visible forms of the architecture that prove the system matters in practice.
+Includes - OpenClaw-hosted demos - Vibe Coder - Expert-in-a-Box - AI Space demos - scenario walkthroughs - proof-of-value materials
+Primary purpose
+Make the architecture legible to other people without requiring them to read the whole doctrine first.
+Authority docs - MASTER_README.md - VISION.md - scenario docs and future demo specs
+Current state
+Mixed. Some product ideas already exist in working or semi-working forms, but they are not yet governed by a single proof strategy.
+Must guarantee - Each proof showcases a real architectural claim - Demos do not overstate what is still stubbed - Product narratives remain downstream of the system architecture
+Must never do - Become the de facto source of truth for the architecture - Promise more than the current system can reconstruct or enforce - Turn APP novelty into the sole public identity of Hydra
+Proof target
+At least one demo cleanly shows governed execution, and at least one demo cleanly shows controlled exploratory pattern search.
+________________________________________
+Cross-Section Dependency Chain
+Primary dependency order
+1.	Constitutional Core
+2.	Kernel
+3.	DLC
+4.	VCKB
+5.	APP
+6.	Garage / AI Space
+7.	Product Proofs
+What this means
+•	Product Proofs should not invent architecture.
+•	APP should not bypass Kernel or DLC.
+•	Garage should not define permissions independently of DLC and Kernel.
+•	VCKB should not behave like generic context injection.
+•	Kernel behavior must remain constitutionally anchored.
+________________________________________
+What Is Real vs Partial vs Design-Only
+Real enough to treat as active implementation
+•	GEL runtime shape
+•	policy evaluation
+•	VCKB loading
+•	telemetry
+•	envelope generation
+•	replay structure
+•	OpenClaw integration pathway
+•	EGL package and egress architecture
+Partial / uneven
+•	output gating maturity
+•	EGL integration completeness
+•	dispatch bridge maturity
+•	authoritative status reporting
+•	knowledge manifest richness
+•	telemetry normalization across sections
+Mostly conceptual / design / stub
+•	full DLC cryptographic lifecycle
+•	multi-PIN user flow
+•	APP engine maturity beyond FM1 stub level
+•	FM2 scoring depth
+•	Patternzandria archival schema implementation
+•	Garage runtime UX and enforcement layer
+•	compensation rails and marketplace behavior
+________________________________________
+The Current Problem: Drift
+Hydra is not mainly blocked by lack of ideas. It is blocked by distributed authority and uneven status reporting.
+Current drift forms: - version and status are spread across README, handoff, constitutional docs, and module-specific docs - some modules are more implemented than the top-level docs imply - some conceptual claims are stronger than their enforcement reality - product framing and implementation status are not always synchronized
+This is the first problem to solve.
+________________________________________
+Alignment Rules
+Every section must have the following:
+1. One authority document
+Not a cluster. One clear primary reference.
+2. One implementation contract
+Must define: - inputs - outputs - guarantees - refusal conditions - telemetry emitted - audit/replay expectations
+3. One proof target
+Every section needs one statement that can be proven.
+4. One status line
+Allowed values: - DESIGN - STUB - PARTIAL - WORKING - HARDENING - CONSTITUTIONAL ONLY
+5. One dependency declaration
+Every section must state: - what it depends on - what depends on it - what it is not allowed to assume
+6. One drift owner
+Someone or something must own reconciliation when docs and code disagree.
+________________________________________
+Recommended Active Tracks
+Hydra should not try to advance all sections equally.
+Active Track A — Kernel hardening
+Reason: this is the strongest proof that boundaries and audit are real.
+Focus now - unify GEL and EGL as one governed runtime story - harden replay and telemetry - normalize envelope behavior - remove ambiguity about output gate vs egress enforcement - produce one end-to-end governed session demo
+Active Track B — DLC implementation spine
+Reason: entitlement is a constitutional pillar and cannot remain mostly rhetorical forever.
+Focus now - token component encryption - multi-PIN assembly - validation path - fail states - interface with kernel checks
+Active Track C — APP proof-of-novelty demo
+Reason: APP is the attention engine and the distinctive research wedge.
+Focus now - real FM1 path - at least one modification generator - minimal FM2 scorer - saved archive entries for both promising and failed outputs - explicit label classes for exploratory outputs
+Keep warm, not primary
+•	full VCKB economy rails
+•	Garage / AI Space UX
+•	broad product expansion
+These should keep evolving in writing and interface thinking, but not dominate implementation until Tracks A–C are tighter.
+________________________________________
+Sequenced Roadmap
+Phase 0 — Reality Lock
+Goal: establish a single truthful map of the current system.
+Deliverables: - one canonical project status board - one section ownership map - one authoritative version table - one reality-vs-vision chart - one drift log
+Exit condition: No major component has contradictory status claims across top-level docs.
+Phase 1 — Kernel Proof
+Goal: prove enforced boundaries and replayable audit end-to-end.
+Deliverables: - governed ingress demo - governed egress demo - envelope trace sample - replay reconstruction sample - telemetry schema freeze v1
+Exit condition: A single governed run can be reconstructed from logs and envelopes.
+Phase 2 — DLC Proof
+Goal: make entitlement real.
+Deliverables: - component format - encryption/decryption flow - multi-PIN assembly - validation endpoint or module - denial behavior examples
+Exit condition: Invalid or partial credentials fail closed in the actual runtime path.
+Phase 3 — APP Proof
+Goal: show useful exploratory pattern search under controlled separation.
+Deliverables: - substrate map output - candidate modification set - scorer output - labeled exploratory classes - first Patternzandria archive entries
+Exit condition: A domain example shows structured novelty, not just clever prose.
+Phase 4 — VCKB Proof
+Goal: show versioned knowledge as a governed substrate.
+Deliverables: - retrieval manifest format - attribution trace - version lock demonstration - source-level audit example - compensation schema draft linked to real retrieval events
+Exit condition: A single output can be tied to specific authoritative versions with visible provenance.
+Phase 5 — Garage / AI Space Proof
+Goal: make context-separated identity legible to real users.
+Deliverables: - vehicle schema - profile switching demo - scoped memory demonstration - destination controls - plain-language explanation layer
+Exit condition: Two profiles with different permissions and memory boundaries can be shown without bleed.
+Phase 6 — Product Proof Packaging
+Goal: make the architecture easy to understand without flattening it.
+Deliverables: - one kernel demo - one APP demo - one VCKB demo - one product walkthrough deck or README set - one clean explainer for OpenClaw-based proof
+Exit condition: A new viewer can understand the system from artifacts before reading patents or deep doctrine.
+________________________________________
+Section-by-Section Next Actions
+Constitutional Core
+•	choose one canonical roadmap/status file
+•	add a version authority rule for all subordinate READMEs
+•	create a drift log that is actually maintained
+•	define mandatory status labels and their meaning
+Kernel
+•	reconcile GEL README, MASTER README, and current runtime state
+•	define whether output gate remains distinct from EGL or is conceptually absorbed by it
+•	produce one canonical ingress/egress sequence diagram
+•	standardize telemetry fields across GEL and EGL
+DLC
+•	write the implementation contract before writing more code
+•	define token format and component lifecycle clearly
+•	decide where validation happens first in the live path
+•	specify refusal and audit behavior for incomplete or invalid assembly
+VCKB
+•	define retrieval manifest schema formally
+•	separate “authoritative knowledge module” from ordinary context more sharply
+•	map patent claims to concrete VCKB runtime behaviors
+•	identify the smallest demo that proves versioned knowledge is meaningfully different from RAG
+APP
+•	define a minimal JSON schema for FM1, SLM output, FM2, and archive entries
+•	separate exploratory labels from governance truth labels
+•	decide one demo domain for the first proof
+•	make failure archiving mandatory from the first real run
+Garage / AI Space
+•	freeze the vocabulary of key, vehicle, destination, and memory boundary
+•	define what part of this must be runtime-enforced vs UX-expressed
+•	write one profile-switch scenario as the canonical test case
+•	version vehicle definitions to prevent silent privilege drift
+Product Proofs
+•	decide what each public-facing artifact is proving
+•	stop treating all product surfaces as equally urgent
+•	make OpenClaw the host proof, not the identity of Hydra
+•	build demo scripts that do not rely on internal explanation to land
+________________________________________
+What Not to Do Next
+•	do not expand the total conceptual surface area
+•	do not add new named subsystems unless they solve a roadmap gap
+•	do not treat every working idea as an immediate implementation priority
+•	do not let APP become the sole public story
+•	do not let demo language outrun actual enforceability
+•	do not keep multiple contradictory status documents alive indefinitely
+________________________________________
+Master Decision Frame for Future Iteration
+Before any major addition, ask: 1. Which section does this belong to? 2. What constitutional parent authorizes it? 3. What dependency does it introduce? 4. What proof target does it move? 5. What drift risk does it create? 6. What section becomes more complex if this lands? 7. Is this core architecture, enabling infrastructure, or product proof?
+If those answers are not clear, the addition is not ready.
+________________________________________
+Proposed Immediate Deliverables
+1.	Canonical Status Board
+2.	Section Ownership Map
+3.	Dependency Graph
+4.	APP Minimal Schema Spec
+5.	DLC Minimal Implementation Contract
+6.	Kernel End-to-End Demo Spec
+________________________________________
+Final Position
+Hydra should now be built as a federation of aligned sections, not as one continuously mutating mass. The constitutional core remains upstream. The kernel, DLC, and APP tracks should carry the next implementation cycle. VCKB, Garage, and product surfaces should stay aligned to those tracks, but should not be allowed to sprawl the build surface faster than the core can stabilize.
+The project is large enough now that alignment is part of the architecture.
