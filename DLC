@@ -1,0 +1,55 @@
+DLC — Digital Library Card
+Project: Hydra Kernel  
+Author: Robert Leroy Bates Jr, Kalamazoo MI  
+Date: 2026-03-27  
+Status: Public disclosure — architecture and prototype documentation
+---
+DLC is Hydra's access and entitlement primitive. The name is intentional — a library card doesn't give you the whole library. It gives you access to what you're authorized to borrow, in the version you've paid for, traceable back to you.
+There are two forms of DLC in this project at different maturity levels.
+---
+DLC Form 1 — Execution Credential (prototyped)
+In the current OpenClaw-facing implementation, a DLC is a cryptographically signed capability token paired with a short-lived request envelope.
+The token carries:
+Subject and entity identity
+Which AI model and governance profile is operating
+Allowed hosts, methods, and operations
+Expiry
+The envelope binds that token to one specific request — this destination, this method, this path, right now.
+Together they mean: no outbound action happens without explicit, scoped, time-bounded, auditable authorization. The proxy denies by default. No envelope, no passage. Every decision is logged for replay.
+This form is working in prototype. It can change real egress behavior around OpenClaw-style agents today.
+---
+DLC Form 2 — Full Entitlement Credential (architectural, partially implemented)
+In the broader Hydra architecture, DLC grows into a three-type compound credential assembled from PIN numbers held by different parties.
+Each PIN is between 4 and 16 characters. A credential is made up of as many PINs as are relevant to the user's context — there is no fixed number. A person with one job and one AI has a simple credential. A person with an employer, a professional license, a union membership, and a second business has a credential with an entity PIN for each. The number of PINs grows with the user's purchases, affiliations, and authorizations.
+The three component types are:
+Model PIN — identifies which AI is operating, its governance profile, its version, and what liability it carries.
+Personal PIN — identifies the user, their permissions, their purchase and subscription history, and their micropayment rails.
+Entity PIN — identifies an institution, employer, professional body, or other affiliated organization. There can be multiple entity PINs on a single credential. The same person might carry a work entity PIN, a professional license PIN, and a union PIN simultaneously.
+No single party holds a complete credential. Each PIN is issued by its respective authority. Assembly requires the right combination for the context being accessed.
+Purchase history attaches to the personal PIN. When an AI attempts to retrieve content from the Version-Controlled Knowledge Base, the assembled DLC determines whether the user has access to that specific content at that specific version. If a user has licensed Cardiologist 101 v2 but not v3, the system uses v2, labels it as such, and can prompt an upgrade. Every retrieval is logged, attributed, and compensates the content author automatically.
+This form collapses what would otherwise be five separate network operations — authentication, permission verification, payment authorization, usage logging, and liability establishment — into one cryptographic operation at assembly time.
+The full multi-PIN assembly, cryptographic lifecycle, and compensation rails are on the roadmap. The architecture and component type definitions are established.
+---
+What both forms share
+Neither form grants ambient authority. A DLC doesn't say "this entity is trusted." It says "this entity is authorized for this specific thing, right now, provably, and we have the record."
+That's the design principle DLC is built on across both forms.
+---
+Relationship to the broader Hydra architecture
+DLC is the credential and entitlement spine that connects:
+GEL (Governance Enforcement Layer) — inbound governance gate that intercepts requests and requires valid credentials before any action proceeds
+EGL (Egress Governance Layer) — outbound gate that enforces DLC and envelope on every external call
+VCKB (Version-Controlled Knowledge Base) — the rights-managed content layer that DLC unlocks at the version level
+Execution Envelope — the per-request authorization artifact DLC is paired with for Form 1
+AI Space / Garage — the user-facing profile and vehicle system that pre-assembles DLC combinations for different use contexts
+Deterministic Replay Engine — which can reconstruct not just what the AI said but which version of which content was in scope under which credential at the time
+In the full architecture, DLC is what prevents an AI agent from having ambient authority. Power stays explicit, scoped, and attributable at every layer.
+---
+Related disclosures
+`PUBLIC_DISCLOSURE.md` — scope and intent of this release
+`DLC_FIRST_PUBLIC_ACKNOWLEDGMENT.md` — first public naming of DLC as a distinct primitive (2026-03-25)
+`KNOWN_LIMITATIONS.md` — honest current implementation status
+`current/egl/src/capability.ts` — Form 1 token structure and signing
+`current/egl/src/envelope.ts` — request envelope primitive
+`current/gel/src/dispatch-bridge.ts` — credential minting at dispatch time
+---
+Hydra Kernel project — Robert Leroy Bates Jr — Kalamazoo MI — 2026
